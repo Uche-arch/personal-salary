@@ -1,10 +1,11 @@
 // let salary2 = usersalary.toLocaleString();
-
+let usernameField = document.getElementById("username");
+let salaryField = document.getElementById("salary-cell");
+let dateField = document.getElementById("date");
 
 function displaySalary() {
-
   let username = document.getElementById("name").value;
-  let usersalary = document.getElementById("salary-initial").value;
+  let usersalary = document.getElementById("salary").value;
   if (username == "" || usersalary == "") {
     let error = document.getElementById("error");
     error.innerHTML = "Input complete entry data before adding";
@@ -26,22 +27,12 @@ function displaySalary() {
 //   .addEventListener("submit", displaySalary);
 
 function update() {
-  // let username = document.getElementById("name").value;
+  let newsalary = document.getElementById("new-salary").value;
+  newsalary = Number(newsalary).toLocaleString();
   let date = new Date().toLocaleDateString();
-
-  let username = localStorage.getItem("name");
-  let usersalary = document.getElementById("salary").value;
-  usersalary = Number(usersalary).toLocaleString();
-  // localStorage.setItem("name", username);
-  localStorage.setItem("salary", usersalary);
-
-  let tr = document.createElement("tr");
-  let tbody = document.getElementById("table-body");
-  tr.innerHTML = `<td>${username}</td> <td>₦${usersalary}</td> <td>${date}</td>`;
-  tbody.appendChild(tr);
-
-  // document.getElementById("name").value = "";
-  document.getElementById("salary").value = "";
+  salaryField.innerHTML = `₦${newsalary }`;
+  dateField.innerHTML = date;
+  document.getElementById("new-salary").value = "";
 }
 function showTable() {
   let div = document.getElementById("form-container");
@@ -55,10 +46,17 @@ function showTable() {
   usersalary = Number(usersalary).toLocaleString();
   let date = new Date().toLocaleDateString();
 
-  let tr = document.createElement("tr");
-  let tbody = document.getElementById("table-body");
-  tr.innerHTML = `<td>${username}</td> <td>₦${usersalary}</td> <td>${date}</td>`;
-  tbody.appendChild(tr);
+  usernameField.innerHTML = username;
+  salaryField.innerHTML = `₦${usersalary}`;
+  dateField.innerHTML = date;
+
+  //  username = localStorage.setItem("name");
+  //  usersalary = localStorage.setItem("salary");
+
+  // let tr = document.createElement("tr");
+  // let tbody = document.getElementById("table-body");
+  // tr.innerHTML = `<td>${username}</td> <td>₦${usersalary}</td> <td>${date}</td>`;
+  // tbody.appendChild(tr);
   //  let salaryUpdate = document.getElementById("salary-update");
   //  salaryUpdate.style.display = "block";
 }
